@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/bloggerblog/css/blog.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/bloggershop/css/nav.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+            <script src="{{ asset('bundles/bloggerblog/js/carousel.js') }}"></script>
+{% endblock %}
+
+
+
+{% block mainrow %}
+<div class="row">
+    <div class="span3 nav">
+        {% block nav %}
+            {% render "BloggerShopBundle:Shop:nav" %}
+        {% endblock %}
+    </div>
+    <div class="span8 offset1">
+        {% block body %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

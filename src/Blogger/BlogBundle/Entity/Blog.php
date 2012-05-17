@@ -1,4 +1,5 @@
 <?php
+// src/Blogger/BlogBundle/Entity/Blog.php
 
 namespace Blogger\BlogBundle\Entity;
 
@@ -13,71 +14,57 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Blog
 {
     /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-    
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $title;
-    
-    /**
      * @ORM\Column(type="string")
      */
     protected $slug;
     
     /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $title;
+
+    /**
      * @ORM\Column(type="string", length=100)
      */
     protected $author;
-    
+
     /**
      * @ORM\Column(type="text")
      */
     protected $blog;
-    
-    /**
-     * @ORM\Column(type="string", length="20")
-     */
-    protected $image;
-    
+
     /**
      * @ORM\Column(type="text")
      */
     protected $tags;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
      */
     protected $comments;
-    
+
     /**
      * @ORM\Column(type="datetime")
      */
     protected $created;
-    
+
     /**
      * @ORM\Column(type="datetime")
      */
     protected $updated;
-
+    
     
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         
-        $this->setCreated(new \DateTime());
-        $this->setUpdated(new \DateTime());
-    }
-
-    /**
-     * @ORM\prePersist
-     */
-    public function setCreatedValue()
-    {
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
     }
@@ -89,40 +76,7 @@ class Blog
     {
        $this->setUpdated(new \DateTime());
     }
-    
-    public function __toString()
-    {
-        return $this->getTitle();
-    }
 
-    public function slugify($text)
-    {
-        // replace non letter or digits by -
-        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
-
-        // trim
-        $text = trim($text, '-');
-
-        // transliterate
-        if (function_exists('iconv'))
-        {
-            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-        }
-
-        // lowercase
-        $text = strtolower($text);
-
-        // remove unwanted characters
-        $text = preg_replace('#[^-\w]+#', '', $text);
-
-        if (empty($text))
-        {
-            return 'n-a';
-        }
-
-        return $text;
-    }
-    
     /**
      * Get id
      *
@@ -141,7 +95,7 @@ class Blog
     public function setTitle($title)
     {
         $this->title = $title;
-
+        
         $this->setSlug($this->title);
     }
 
@@ -196,26 +150,6 @@ class Blog
             return substr($this->blog, 0, $length);
         else
             return $this->blog;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string 
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**
@@ -283,7 +217,7 @@ class Blog
      *
      * @param Blogger\BlogBundle\Entity\Comment $comments
      */
-    public function addComments(\Blogger\BlogBundle\Entity\Comment $comments)
+    public function addComment(\Blogger\BlogBundle\Entity\Comment $comments)
     {
         $this->comments[] = $comments;
     }
@@ -296,6 +230,11 @@ class Blog
     public function getComments()
     {
         return $this->comments;
+    }
+    
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 
     /**
@@ -317,14 +256,33 @@ class Blog
     {
         return $this->slug;
     }
-
-    /**
-     * Add comments
-     *
-     * @param Blogger\BlogBundle\Entity\Comment $comments
-     */
-    public function addComment(\Blogger\BlogBundle\Entity\Comment $comments)
+    
+    public function slugify($text)
     {
-        $this->comments[] = $comments;
+        // replace non letter or digits by -
+        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+    
+        // trim
+        $text = trim($text, '-');
+    
+        // transliterate
+        if (function_exists('iconv'))
+        {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+    
+        // lowercase
+        $text = strtolower($text);
+    
+        // remove unwanted characters
+        $text = preg_replace('#[^-\w]+#', '', $text);
+    
+        if (empty($text))
+        {
+            return 'n-a';
+        }
+    
+        return $text;
     }
+    
 }

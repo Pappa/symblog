@@ -1,4 +1,5 @@
 <?php
+// src/Blogger/BlogBundle/Form/EnquiryType.php
 
 namespace Blogger\BlogBundle\Form;
 
@@ -17,6 +18,6 @@ class EnquiryType extends AbstractType
 
     public function getName()
     {
-        return 'blogger_blogbundle_enquirytype';
+        return 'contact';
     }
 }

@@ -2,58 +2,90 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html"; charset=utf-8" />
-        <title>{% block title %}symblog{% endblock %} - symblog</title>
+        <title>{% block title %}{{ site_name }}{% endblock %} - {{ site_name }}</title>
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         {% block stylesheets %}
-            <link href='http://fonts.googleapis.com/css?family=Irish+Grover' rel='stylesheet' type='text/css'>
-            <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
-            {% stylesheets 
-                'css/*'
-                filter='?yui_css'
-            %}
-                <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
-            {% endstylesheets %}
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/paellatwitterbootstrap/2.0.2/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/paellatwitterbootstrap/2.0.2/css/bootstrap-responsive.min.css') }}">
         {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        
+        <div class="container">
 
-        <section id="wrapper">
-            <header id="header">
-                <div class="top">
-                    {% block navigation %}
-                        <nav>
-                            <ul class="navigation">
-                                <li><a href="{{ path('BloggerBlogBundle_homepage') }}">Home</a></li>
-                                <li><a href="{{ path('BloggerBlogBundle_about') }}">About</a></li>
-                                <li><a href="{{ path('BloggerBlogBundle_contact') }}">Contact</a></li>
-                            </ul>
-                        </nav>
+            {% block navigation %}
+                <div class="navbar">
+                    <div class="navbar-inner">
+                      <div class="container">
+                        <a class="brand" href="{{ path('BloggerBlogBundle_homepage') }}">{{ site_name }}</a>
+                        <div class="nav-collapse">
+                          <ul class="nav pull-right">
+                            {% if app.user %}
+                                <li><a href="{{ path('BloggerBlogBundle_blog_new') }}">New Post</a></li>
+                                <li><a href="{{ path('BloggerGalleryBundle_gallery_new') }}">New Gallery</a></li>
+                            {% endif %}
+                            <li><a href="{{ path('BloggerBlogBundle_homepage') }}">Home</a></li>
+                            <li><a href="{{ path('BloggerShopBundle_shop') }}">Shop</a></li>
+                            <li><a href="{{ path('BloggerGalleryBundle_gallery_index') }}">Galleries</a></li>
+                            <li><a href="{{ path('BloggerBlogBundle_about') }}">About</a></li>
+                            <li><a href="{{ path('BloggerBlogBundle_contact') }}">Contact</a></li>
+                            {% if app.user %}
+                                <li><a href="{{ path('BloggerBlogBundle_security_logout') }}">Logout</a></li>
+                            {% else %}
+                                <li><a href="{{ path('BloggerBlogBundle_security_login') }}">Login</a></li>
+                            {% endif %}
+                          </ul>
+                        </div><!-- /.nav-collapse -->
+                      </div>
+                    </div><!-- /navbar-inner -->
+                </div><!-- /navbar -->
+            {% endblock %}
+            
+            <div id="myCarousel" class="carousel">
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <div class="active item"><img src="{{ asset('banner.jpg') }}"/></div>
+                    <div class="item"><img src="{{ asset('banner.jpg') }}"/></div>
+                </div>
+            </div>
+            
+            {% block mainrow %}
+            <div class="row">
+                <div class="span8">
+                    {% block body %}{% endblock %}
+                </div>
+                <div class="span3 offset1 sidebar">
+                    {% block sidebar %}{% endblock %}
+                </div>
+            </div>
+            {% endblock %}
+                
+            <div class="row">
+    
+                <div class="span8" id="footer">
+                    {% block footer %}
+                        This blog was created in <a href="http://symfony.com/">Symfony2</a>, building on the <a href="http://tutorial.symblog.co.uk/">symblog</a> 
+                        tutorial by <a href="https://github.com/dsyph3r">dsyph3r</a>
                     {% endblock %}
                 </div>
-
-                <hgroup>
-                    <h2>{% block blog_title %}<a href="{{ path('BloggerBlogBundle_homepage') }}">symblog</a>{% endblock %}</h2>
-                    <h3>{% block blog_tagline %}<a href="{{ path('BloggerBlogBundle_homepage') }}">creating a blog in Symfony2</a>{% endblock %}</h3>
-                </hgroup>
-            </header>
-
-            <section class="main-col">
-                {% block body %}{% endblock %}
-            </section>
-            <aside class="sidebar">
-                {% block sidebar %}{% endblock %}
-            </aside>
-
-            <div id="footer">
-                {% block footer %}
-                    Symfony2 blog tutorial - created by <a href="https://github.com/dsyph3r">dsyph3r</a>
-                {% endblock %}
             </div>
-        </section>
 
-        {% block javascripts %}{% endblock %}
+        </div>
+
+        {% block javascripts %}
+            <script src="{{ asset('bundles/paellatwitterbootstrap/js/jquery-1.7.min.js') }}"></script>
+            <script src="{{ asset('bundles/paellatwitterbootstrap/js/jquery-ui-1.8.16.custom.min.js') }}"></script>
+            
+            <script src="{{ asset('bundles/paellatwitterbootstrap/2.0.2/js/bootstrap.min.js') }}"></script>
+            
+            <script src="{{ asset('bundles/paellatwitterbootstrap/2.0.0/js/bootstrap-carousel.js') }}"></script>
+            
+            <!--<script src="{{ asset('bundles/wilogmaintenance/js/jquery.treeview.js') }}"></script>
+            <script src="{{ asset('bundles/paellatwitterbootstrap/js/jquery.tablesorter.min.js') }}"></script>-->
+        {% endblock %}
+        
     </body>
 </html>

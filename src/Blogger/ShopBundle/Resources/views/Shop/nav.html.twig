@@ -1,0 +1,25 @@
+<div id="nav">
+    <h3>Products</h3>
+    <ul>
+        {% for category in categories %}
+            
+            <li>
+                {% if selected_category and selected_category.id == category.id %}
+                    <strong>{{ category.title }}</strong>
+                {% else %}
+                    <a href="{{ path('BloggerShopBundle_category', { 'category_slug': category.slug }) }}">{{ category.title }}</a>
+                {% endif %}
+            </li>
+        {% else %}
+            <li>There are no product categories.</li>
+        {% endfor %}
+        </ul>
+    {% if app.user %}
+        <ul id="admin">
+            <li><a href="{{ path('BloggerShopBundle_category_add') }}">Add another category</a></li>
+            {% if selected_category %}
+                <li><a href="{{ path('BloggerShopBundle_product_add', { 'category_slug': selected_category.slug }) }}">Add a product to this category</a></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+</div>

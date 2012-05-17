@@ -1,3 +1,6 @@
+parameters:
+#    blogger_blog.example.class: Blogger\BlogBundle\Example
+
 services:
     blogger_blog.twig.extension:
         class: Blogger\BlogBundle\Twig\Extensions\BloggerBlogExtension

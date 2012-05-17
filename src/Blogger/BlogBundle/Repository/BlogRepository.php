@@ -15,13 +15,13 @@ class BlogRepository extends EntityRepository
     public function getLatestBlogs($limit = null)
     {
         $qb = $this->createQueryBuilder('b')
-                   ->select('b, c')
-                   ->leftJoin('b.comments', 'c')
-                   ->addOrderBy('b.created', 'DESC');
-    
+                    ->select('b, c')
+                    ->leftJoin('b.comments', 'c')
+                    ->addOrderBy('b.created', 'DESC');
+
         if (false === is_null($limit))
             $qb->setMaxResults($limit);
-    
+
         return $qb->getQuery()
                   ->getResult();
     }
@@ -52,7 +52,7 @@ class BlogRepository extends EntityRepository
         $tagWeights = array();
         if (empty($tags))
             return $tagWeights;
-        
+    
         foreach ($tags as $tag)
         {
             $tagWeights[$tag] = (isset($tagWeights[$tag])) ? $tagWeights[$tag] + 1 : 1;
@@ -61,9 +61,9 @@ class BlogRepository extends EntityRepository
         uksort($tagWeights, function() {
             return rand() > rand();
         });
-        
+    
         $max = max($tagWeights);
-        
+    
         // Max of 5 weights
         $multiplier = ($max > 5) ? 5 / $max : 1;
         foreach ($tagWeights as &$tag)
@@ -73,5 +73,4 @@ class BlogRepository extends EntityRepository
     
         return $tagWeights;
     }
-    
 }

@@ -1,0 +1,29 @@
+{% extends 'BloggerShopBundle::layout.html.twig' %}
+
+{% block body %}
+
+        <header>
+            <h2>{{ product.title }}</h2>
+        </header>
+        
+        <div class="snippet">
+            <p>{{ product.description|nl2br }}</p>
+            
+            {% render 'BloggerGalleryBundle:Gallery:gallery' with { 'images': product.images } %}
+        </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% include 'BloggerGalleryBundle:Gallery:gallery.css.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+     {% include 'BloggerGalleryBundle:Gallery:gallery.js.html.twig' %}
+{% endblock %}
+
+{% block nav %}
+    {% render "BloggerShopBundle:Shop:nav" with { 'category_slug': product.category.slug } %}
+{% endblock %}

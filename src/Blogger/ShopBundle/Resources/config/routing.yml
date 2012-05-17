@@ -1,0 +1,20 @@
+BloggerShopBundle_shop:
+    pattern:  /shop
+    defaults: { _controller: BloggerShopBundle:Shop:shop }
+
+BloggerShopBundle_category_add:
+    pattern:  /shop/add-category
+    defaults: { _controller: BloggerShopBundle:Shop:categoryAdd }
+
+BloggerShopBundle_category:
+    pattern:  /shop/{category_slug}
+    defaults: { _controller: BloggerShopBundle:Shop:category }
+    
+BloggerShopBundle_product_add:
+    pattern:  /shop/{category_slug}/add-product
+    defaults: { _controller: BloggerShopBundle:Shop:productAdd }
+
+BloggerShopBundle_product:
+    pattern:  /shop/{category_slug}/{product_slug}
+    defaults: { _controller: BloggerShopBundle:Shop:product }
+    

@@ -1,0 +1,7 @@
+
+
+.blogImage img { display: block; padding: 5px; border: 1px solid #ccc; margin: 20px auto; float: none; max-width:700px; clear:both;}
+
+br {clear:both;}
+.pikachoose br {clear:none;}
+.picachoose img {float:none;}

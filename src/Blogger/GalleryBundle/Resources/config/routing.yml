@@ -1,0 +1,23 @@
+BloggerGalleryBundle_gallery_index:
+    pattern:  /galleries
+    defaults: { _controller: BloggerGalleryBundle:Gallery:index }
+    
+BloggerGalleryBundle_gallery_show:
+    pattern:  /galleries/{id}/{slug}/{start}
+    defaults: { _controller: BloggerGalleryBundle:Gallery:show, start: 0 }
+        
+BloggerGalleryBundle_gallery_new:
+    pattern:  /gallery/new
+    defaults: { _controller: BloggerGalleryBundle:Gallery:new }
+    requirements:
+        _method:  GET|POST
+        id: \d+
+        
+
+        
+BloggerGalleryBundle_blog_show:
+    pattern:  /{id}/{slug}
+    defaults: { _controller: BloggerGalleryBundle:Blog:show }
+    requirements:
+        _method:  GET
+        id: \d+

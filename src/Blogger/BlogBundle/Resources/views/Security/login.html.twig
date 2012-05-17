@@ -1,0 +1,22 @@
+{# src/Blogger/BlogBundle/Resources/views/Page/login.html.twig #}
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}Login{% endblock%}
+
+{% block body %}
+    
+    <form action="{{ path('BloggerBlogBundle_security_login_check') }}" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="_username" value="" />
+        <br/>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="_password" />
+    
+        {#
+            If you want to control the URL the user is redirected to on success (more details below)
+            <input type="hidden" name="_target_path" value="/account" />
+        #}
+        <br/>
+        <button type="submit">login</button>
+    </form>
+{% endblock %}

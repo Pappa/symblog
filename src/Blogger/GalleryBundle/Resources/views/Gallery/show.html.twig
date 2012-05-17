@@ -1,0 +1,30 @@
+
+{% extends 'BloggerGalleryBundle::layout.html.twig' %}
+
+{% block body %}
+    <article class="gallery">
+        <header>
+            <div class="date"><time datetime="{{ gallery.created|date('c') }}">{{ gallery.created|date('l, F j, Y') }}</time></div>
+            <h2>{{ gallery.title }}</h2>
+        </header>
+        <div>
+            <p>{{ gallery.description }}</p>
+            
+            {% render 'BloggerGalleryBundle:Gallery:gallery' with { 'images': images } %}
+        </div>
+    </article>
+    
+{% endblock %}
+
+
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% include 'BloggerGalleryBundle:Gallery:gallery.css.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+     {% include 'BloggerGalleryBundle:Gallery:gallery.js.html.twig' with { 'start': start } %}
+{% endblock %}

@@ -1,4 +1,5 @@
 <?php
+// src/Blogger/BlogBundle/Entity/Enquiry.php
 
 namespace Blogger\BlogBundle\Entity;
 
@@ -17,18 +18,6 @@ class Enquiry
     protected $subject;
 
     protected $body;
-
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addPropertyConstraint('name', new NotBlank());
-
-        $metadata->addPropertyConstraint('email', new Email());
-
-        $metadata->addPropertyConstraint('subject', new NotBlank());
-        $metadata->addPropertyConstraint('subject', new MaxLength(50));
-
-        $metadata->addPropertyConstraint('body', new MinLength(50));
-    }
 
     public function getName()
     {
@@ -68,5 +57,19 @@ class Enquiry
     public function setBody($body)
     {
         $this->body = $body;
+    }
+    
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('name', new NotBlank());
+
+        $metadata->addPropertyConstraint('email', new Email(array(
+            'message' => 'symblog does not like invalid emails. Give me a real one!'
+        )));
+
+        $metadata->addPropertyConstraint('subject', new NotBlank());
+        $metadata->addPropertyConstraint('subject', new MaxLength(50));
+
+        $metadata->addPropertyConstraint('body', new MinLength(50));
     }
 }

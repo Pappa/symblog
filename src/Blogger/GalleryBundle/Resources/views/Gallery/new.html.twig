@@ -1,0 +1,13 @@
+{# src/Blogger/GalleryBundle/Resources/views/Gallery/new.html.twig #}
+{% extends 'BloggerGalleryBundle::layout.html.twig' %}
+
+{% block title %}New Gallery{% endblock %}
+{% block body %}
+    <form action="{{ path('BloggerGalleryBundle_gallery_new') }}" method="post" {{ form_enctype(form) }} class="blogger">
+   
+    {{ form_widget(form) }}
+    <p>
+        <input type="submit" value="Submit">
+    </p>
+</form>
+{% endblock %}

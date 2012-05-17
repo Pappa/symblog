@@ -1,3 +1,4 @@
+{# src/Blogger/BlogBundle/Resources/views/Page/contact.html.twig #}
 {% extends 'BloggerBlogBundle::layout.html.twig' %}
 
 {% block title %}Contact{% endblock%}
@@ -6,7 +7,7 @@
     <header>
         <h1>Contact symblog</h1>
     </header>
-
+    
     {% if app.session.hasFlash('blogger-notice') %}
         <div class="blogger-notice">
             {{ app.session.flash('blogger-notice') }}
@@ -14,7 +15,6 @@
     {% endif %}
 
     <p>Want to contact symblog?</p>
-
     <form action="{{ path('BloggerBlogBundle_contact') }}" method="post" {{ form_enctype(form) }} class="blogger">
         {{ form_errors(form) }}
 
@@ -27,4 +27,6 @@
 
         <input type="submit" value="Submit" />
     </form>
+    
+    
 {% endblock %}

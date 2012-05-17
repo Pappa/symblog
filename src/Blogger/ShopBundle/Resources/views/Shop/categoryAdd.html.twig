@@ -1,0 +1,17 @@
+{% extends 'BloggerShopBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <header>
+        <h2>Add a new category</h2>
+    </header>
+    
+    <form action="{{ path('BloggerShopBundle_category_add') }}" method="post" {{ form_enctype(form) }} class="blogger">
+   
+    {{ form_widget(form) }}
+    <p>
+        <input type="submit" value="Submit">
+    </p>
+</form>
+
+{% endblock %}

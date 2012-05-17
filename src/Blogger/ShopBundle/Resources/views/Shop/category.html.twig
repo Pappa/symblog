@@ -1,0 +1,28 @@
+{% extends 'BloggerShopBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <header>
+        <h2>{{ category.title }}</h2>
+    </header>
+    
+    {% for product in category.products %}
+        
+        <header>
+            <h3><a href="{{ path('BloggerShopBundle_product', { 'category_slug': category.slug, 'product_slug': product.slug }) }}">{{ product.title }}</a></h3>
+        </header>
+        
+        <div class="snippet">
+            <p>{{ product.description(200) }}</p>
+            <p class="continue"><a href="{{ path('BloggerShopBundle_product', { 'category_slug': category.slug, 'product_slug': product.slug }) }}">More...</a></p>
+        </div>
+        
+    {% else %}
+        <p>There are no products in this category.</p>
+    {% endfor %}
+
+{% endblock %}
+
+{% block nav %}
+    {% render "BloggerShopBundle:Shop:nav" with { 'category_slug': category.slug } %}
+{% endblock %}

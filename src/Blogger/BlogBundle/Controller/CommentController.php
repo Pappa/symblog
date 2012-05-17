@@ -1,4 +1,5 @@
 <?php
+// src/Blogger/BlogBundle/Controller/CommentController.php
 
 namespace Blogger\BlogBundle\Controller;
 
@@ -36,13 +37,14 @@ class CommentController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
+            
             $em = $this->getDoctrine()
                        ->getEntityManager();
             $em->persist($comment);
             $em->flush();
-                
+
             return $this->redirect($this->generateUrl('BloggerBlogBundle_blog_show', array(
-                'id'    => $comment->getBlog()->getId(),
+                'id' => $comment->getBlog()->getId(),
                 'slug'  => $comment->getBlog()->getSlug())) .
                 '#comment-' . $comment->getId()
             );

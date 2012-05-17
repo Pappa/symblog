@@ -1,15 +1,17 @@
 <?php
+// src/Blogger/BlogBundle/DataFixtures/ORM/CommentFixtures.php
 
 namespace Blogger\BlogBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
 use Blogger\BlogBundle\Entity\Comment;
 use Blogger\BlogBundle\Entity\Blog;
 
 class CommentFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
-    public function load(\Doctrine\Common\Persistence\ObjectManager $manager)
+    public function load(ObjectManager $manager)
     {
         $comment = new Comment();
         $comment->setUser('symfony');
@@ -42,14 +44,14 @@ class CommentFixtures extends AbstractFixture implements OrderedFixtureInterface
         $comment->setBlog($manager->merge($this->getReference('blog-2')));
         $comment->setCreated(new \DateTime("2011-07-23 06:18:35"));
         $manager->persist($comment);
-        
+
         $comment = new Comment();
         $comment->setUser('Kate');
         $comment->setComment('If I win, you become my slave.');
         $comment->setBlog($manager->merge($this->getReference('blog-2')));
         $comment->setCreated(new \DateTime("2011-07-23 06:22:53"));
         $manager->persist($comment);
-        
+
         $comment = new Comment();
         $comment->setUser('Dade');
         $comment->setComment('Your SLAVE?');

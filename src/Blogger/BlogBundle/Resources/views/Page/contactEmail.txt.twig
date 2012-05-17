@@ -1,4 +1,5 @@
-A contact enquiry was made by {{ enquiry.name }} at {{ "now"|date("Y-m-d H:i") }}.
+{# src/Blogger/BlogBundle/Resources/views/Page/contactEmail.txt.twig #}
+A contact enquiry was made by {{ enquiry.name }} at {{ "now" | date("Y-m-d H:i") }}.
 
 Reply-To: {{ enquiry.email }}
 Subject: {{ enquiry.subject }}

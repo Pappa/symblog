@@ -1,8 +1,10 @@
 <?php
+// src/Blogger/BlogBundle/Controller/PageController.php
 
 namespace Blogger\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Blogger\BlogBundle\Entity\Enquiry;
 use Blogger\BlogBundle\Form\EnquiryType;
 
@@ -12,7 +14,7 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()
                    ->getEntityManager();
-
+                   
         $blogs = $em->getRepository('BloggerBlogBundle:Blog')
                     ->getLatestBlogs();
 
@@ -36,9 +38,10 @@ class PageController extends Controller
             $form->bindRequest($request);
     
             if ($form->isValid()) {
+
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Contact enquiry from symblog')
-                    ->setFrom('enquiries@symblog.co.uk')
+                    ->setSubject('Contact enquiry from KnifeMakingUnplugged.co.uk')
+                    ->setFrom('enquiries@knifemakingunplugged.co.uk')
                     ->setTo($this->container->getParameter('blogger_blog.emails.contact_email'))
                     ->setBody($this->renderView('BloggerBlogBundle:Page:contactEmail.txt.twig', array('enquiry' => $enquiry)));
                 $this->get('mailer')->send($message);
@@ -56,6 +59,7 @@ class PageController extends Controller
         ));
     }
     
+    
     public function sidebarAction()
     {
         $em = $this->getDoctrine()
@@ -67,6 +71,7 @@ class PageController extends Controller
         $tagWeights = $em->getRepository('BloggerBlogBundle:Blog')
                          ->getTagWeights($tags);
     
+        
         $commentLimit   = $this->container
                                ->getParameter('blogger_blog.comments.latest_comment_limit');
         $latestComments = $em->getRepository('BloggerBlogBundle:Comment')
@@ -77,5 +82,5 @@ class PageController extends Controller
             'tags'              => $tagWeights
         ));
     }
-
+    
 }

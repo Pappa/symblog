@@ -1,0 +1,8 @@
+{# src/Blogger/BlogBundle/Resources/views/Blog/edit.html.twig #}
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}Edit: {{ blog.title }}{% endblock %}
+
+{% block body %}
+    {% include 'BloggerBlogBundle:Blog:form.html.twig' with { 'blog': blog, 'form': form } %}
+{% endblock %}
