@@ -118,6 +118,11 @@ class GalleryController extends Controller
      */
     public function editAction($id)
     {
+        
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN'))
+            throw new AccessDeniedException();
+            
+            
         $em = $this->getDoctrine()->getEntityManager();
 
         $gallery = $em->getRepository('BloggerGalleryBundle:Gallery')->find($id);
