@@ -99,10 +99,6 @@ class GalleryController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $galleries = $em->getRepository('BloggerBlogBundle:Gallery')->findAll();
-
-        if (!$galleries) {
-            throw $this->createNotFoundException('No Gallieres.');
-        }
     
         return $this->render('BloggerBlogBundle:Gallery:index.html.twig', array(
             'galleries'      => $galleries,

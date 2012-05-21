@@ -6,7 +6,7 @@
         <header>
             <div class="date"><time datetime="{{ gallery.created|date('c') }}">{{ gallery.created|date('l, F j, Y') }}</time></div>
             <h2>{{ gallery.title }}</h2>
-            <div class="edit">[<a href="{{ path('BloggerGalleryBundle_gallery_edit', { 'id': gallery.id, 'slug': gallery.slug }) }}">edit</a>]</div>
+            <div class="edit">[<a class="delete" href="{{ path('BloggerGalleryBundle_gallery_delete', { 'id': gallery.id, 'slug': gallery.slug }) }}">delete</a>]</div>
         </header>
         <div>
             <p>{{ gallery.description }}</p>

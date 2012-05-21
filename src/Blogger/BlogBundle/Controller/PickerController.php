@@ -18,10 +18,6 @@ class PickerController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $galleries = $em->getRepository('BloggerBlogBundle:Gallery')->findAll();
-
-        if (!$galleries) {
-            throw $this->createNotFoundException('No Gallieres.');
-        }
         
         return $this->render('BloggerBlogBundle:Picker:picker.html.twig', array(
             'galleries'      => $galleries,

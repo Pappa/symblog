@@ -41,7 +41,7 @@ class Gallery
     protected $tags;
 
     /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="gallery")
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="gallery", orphanRemoval=true)
      */
     protected $images;
 

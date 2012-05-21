@@ -2,6 +2,14 @@ BloggerGalleryBundle_gallery_index:
     pattern:  /galleries
     defaults: { _controller: BloggerGalleryBundle:Gallery:index }
     
+BloggerGalleryBundle_gallery_edit:
+    pattern:  /galleries/{id}/{slug}/edit
+    defaults: { _controller: BloggerGalleryBundle:Gallery:edit }
+    
+BloggerGalleryBundle_gallery_delete:
+    pattern:  /galleries/{id}/{slug}/delete
+    defaults: { _controller: BloggerGalleryBundle:Gallery:delete }
+    
 BloggerGalleryBundle_gallery_show:
     pattern:  /galleries/{id}/{slug}/{start}
     defaults: { _controller: BloggerGalleryBundle:Gallery:show, start: 0 }

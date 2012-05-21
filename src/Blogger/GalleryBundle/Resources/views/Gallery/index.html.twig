@@ -19,6 +19,12 @@
             <p class="continue"><a href="{{ path('BloggerGalleryBundle_gallery_show', { 'id': gallery.id, 'slug': gallery.slug }) }}">more...</a></p>
         </div>
     </article>
+    {% else %}
+    <article class="gallery blog">
+        <header>
+            <h2>No Galleries</h2>
+        </header>
+    </article>
     {% endfor %}
 
 {% endblock %}

@@ -50,14 +50,10 @@ class GalleryController extends Controller
                 }
                 
                 $em->flush();
-    
-                /*return $this->render('BloggerGalleryBundle:Gallery:show.html.twig', array(
-                    'gallery'      => $gallery
-                ));*/
-    
-                // use the above return for debugging
+                
                 return $this->redirect($this->generateUrl('BloggerGalleryBundle_gallery_show', array(
-                    'slug'      => $gallery->getSlug()
+                    'slug'      => $gallery->getSlug(),
+                    'id'      => $gallery->getId()
                 )));
         
             }
@@ -76,10 +72,6 @@ class GalleryController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $gallery = $em->getRepository('BloggerGalleryBundle:Gallery')->findOneBySlug($slug);
-
-        if (!$gallery) {
-            throw $this->createNotFoundException('Unable to find gallery.');
-        }
     
         $images = $em->getRepository('BloggerGalleryBundle:Image')
                        ->getImagesForGallery($gallery->getId());
@@ -98,10 +90,6 @@ class GalleryController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $galleries = $em->getRepository('BloggerGalleryBundle:Gallery')->findAll();
-
-        if (!$galleries) {
-            throw $this->createNotFoundException('No Gallieres.');
-        }
     
         return $this->render('BloggerGalleryBundle:Gallery:index.html.twig', array(
             'galleries'      => $galleries,
@@ -124,5 +112,40 @@ class GalleryController extends Controller
         return $this->render('BloggerGalleryBundle:Gallery:image.html.twig', array(
             'image'      => $image,
         ));
+    }
+    /**
+     * Edit a gallery
+     */
+    public function editAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $gallery = $em->getRepository('BloggerGalleryBundle:Gallery')->find($id);
+    
+        $images = $em->getRepository('BloggerGalleryBundle:Image')
+                       ->getImagesForGallery($gallery->getId());
+    
+        return $this->render('BloggerGalleryBundle:Gallery:edit.html.twig', array(
+            'gallery'      => $gallery,
+            'images'       => $images,
+            'start'        => '0'
+        ));
+    }
+    
+    public function deleteAction($id)
+    {
+        
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN'))
+            throw new AccessDeniedException();
+            
+            
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $gallery = $em->getRepository('BloggerGalleryBundle:Gallery')->find($id);
+
+        $em->remove($gallery);            
+        $em->flush();
+    
+        return $this->redirect($this->generateUrl('BloggerGalleryBundle_gallery_index'));
     }
 }

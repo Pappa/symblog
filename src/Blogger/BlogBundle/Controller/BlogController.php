@@ -119,16 +119,10 @@ class BlogController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $blog = $em->getRepository('BloggerBlogBundle:Blog')->find($id);
-/*
-        if (!$em->remove($blog)) {
-            throw $this->createNotFoundException('Unable to delete Blog post.');
-        } else {
-            $em->flush();
-        }*/
-            
-            $em->remove($blog);
-            $em->flush();
+
+        $em->remove($blog);
+        $em->flush();
     
-            return $this->redirect($this->generateUrl('BloggerBlogBundle_homepage'));
+        return $this->redirect($this->generateUrl('BloggerBlogBundle_homepage'));
     }
 }
