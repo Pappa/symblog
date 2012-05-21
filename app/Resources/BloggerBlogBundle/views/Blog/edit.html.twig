@@ -4,15 +4,22 @@
 {% block title %}Edit: {{ blog.title }}{% endblock %}
 
 {% block body %}
-    {% include 'BloggerBlogBundle:Blog:form.html.twig' with { 'blog': blog, 'form': form } %}
+    <article class="blog">
+        <header>
+            <div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time></div>
+            <h2>{{ blog.title }}</h2>
+            <div class="edit">[<a class="delete" href="{{ path('BloggerBlogBundle_blog_delete', { 'id': blog.id, 'slug': blog.slug }) }}">delete</a>]</div>
+        </header>
+        <div>
+            {% include 'BloggerBlogBundle:Blog:form.html.twig' with { 'blog': blog, 'form': form } %}
     
-    {% render "BloggerGalleryBundle:Picker:picker" %}
-    
+            {% render "BloggerGalleryBundle:Picker:picker" %}
+        </div>
+    </article>
 {% endblock %}
-
-
 
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/bloggergallery/js/picker.js') }}"></script>
+    <script src="{{ asset('bundles/bloggerblog/js/blog.js') }}"></script>
 {% endblock %}

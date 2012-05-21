@@ -108,4 +108,27 @@ class BlogController extends Controller
             'form'      => $form->createView()
         ));
     }
+    
+    public function deleteAction($id, $slug)
+    {
+        
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN'))
+            throw new AccessDeniedException();
+            
+            
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $blog = $em->getRepository('BloggerBlogBundle:Blog')->find($id);
+/*
+        if (!$em->remove($blog)) {
+            throw $this->createNotFoundException('Unable to delete Blog post.');
+        } else {
+            $em->flush();
+        }*/
+            
+            $em->remove($blog);
+            $em->flush();
+    
+            return $this->redirect($this->generateUrl('BloggerBlogBundle_homepage'));
+    }
 }

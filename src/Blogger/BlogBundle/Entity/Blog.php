@@ -46,7 +46,7 @@ class Blog
     protected $tags;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog", orphanRemoval=true)
      */
     protected $comments;
 
