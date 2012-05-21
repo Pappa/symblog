@@ -6,7 +6,7 @@
         <h2>Add a new product</h2>
     </header>
     
-    <form action="{{ path('BloggerShopBundle_category_add') }}" method="post" {{ form_enctype(form) }} class="blogger">
+    <form action="{{ path('BloggerShopBundle_product_add', { 'category_slug': category_slug }) }}" method="post" {{ form_enctype(form) }} class="blogger">
    
     {{ form_widget(form) }}
     <p>

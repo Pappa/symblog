@@ -72,10 +72,10 @@ class ShopController extends Controller
         return $this->render('BloggerShopBundle:Shop:product.html.twig', array('category' => $category, 'product' => $product));
     }
     
-    public function productAddAction()
+    public function productAddAction($category_slug)
     {
-        $category = new Product();
-        $form   = $this->createForm(new CategoryType(), $category);
+        $product = new Product();
+        $form   = $this->createForm(new ProductType(), $product);
         
         $request = $this->get('request');
         if ('POST' == $request->getMethod()) {
@@ -84,17 +84,21 @@ class ShopController extends Controller
             
                 $em = $this->getDoctrine()
                            ->getEntityManager();
-                $em->persist($category);
+                $category = $em->getRepository('BloggerShopBundle:Category')->findOneBySlug($category_slug);
+                $product->setCategory($category);
+                $em->persist($product);
                 $em->flush();
     
-                return $this->redirect($this->generateUrl('BloggerShopBundle_category', array(
-                    'category_slug'  => $category->getSlug()))
+                return $this->redirect($this->generateUrl('BloggerShopBundle_product', array(
+                    'product_slug'   => $product->getSlug(),
+                    'category_slug'  => $category_slug))
                 );
             }
         }
         
         return $this->render('BloggerShopBundle:Shop:productAdd.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'category_slug'  => $category_slug
         ));
     }
     
