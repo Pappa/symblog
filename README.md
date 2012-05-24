@@ -9,6 +9,18 @@ Mostly this project is just for me to learn symfony2, but maybe someone will fin
 The project is forked from here: https://github.com/dsyph3r/symblog
 An excellent symfony2 tutorial which was the basis for this project.
 
+## Installing
+
+ 1. Clone the repository
+ 2. Rename 'app/config/parameters.ini.dist' to 'app/config/parameters.ini' and add your parameters
+ 3. Rename 'src/Blogger/BlogBundle/Resources/config/config.yml.dist' to 'src/Blogger/BlogBundle/Resources/config/config.yml' and add your parameters
+ 4. Rename 'src/Blogger/ShopBundle/Resources/config/config.yml.dist' to 'src/Blogger/ShopBundle/Resources/config/config.yml' and add your parameters
+ 5. Run 'php bin/vendors install' to install all the required vendors
+ 6. Install the assets with 'php app/console assets:install web'
+ 7. Create the database with 'php app/console doctrine:database:create'
+ 8. Update schema with 'php app/console doctrine:schema:create'
+ 9. Load fixtures with 'php app/console doctrine:fixtures:load'
+
 Original readme below.
 
 
