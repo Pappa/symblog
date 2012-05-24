@@ -7,3 +7,5 @@ web/bundles/*
 app/DoctrineMigrations
 *~
 *.DS_Store
+src/Blogger/ShopBundle/Resources/config/config.yml
+src/Blogger/BlogBundle/Resources/config/config.yml

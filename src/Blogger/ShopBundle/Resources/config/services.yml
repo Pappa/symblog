@@ -1,6 +1,5 @@
 parameters:
 #    blogger_shop.example.class: \ShopBundle\Example
-    paypal_email: test@test.com
 
 
 services:
