@@ -68,8 +68,9 @@ class ShopController extends Controller
                    
         $category = $em->getRepository('BloggerShopBundle:Category')->findOneBySlug($category_slug);
         $product = $em->getRepository('BloggerShopBundle:Product')->findOneBySlug($product_slug);
+        $email = $this->container->getParameter('paypal_email');
         
-        return $this->render('BloggerShopBundle:Shop:product.html.twig', array('category' => $category, 'product' => $product));
+        return $this->render('BloggerShopBundle:Shop:product.html.twig', array('category' => $category, 'product' => $product, 'email' => $email));
     }
     
     public function productAddAction($category_slug)
@@ -116,6 +117,8 @@ class ShopController extends Controller
         } else {
             $return_array['selected_category'] = NULL;
         }
+        
+        $return_array['email'] = $this->container->getParameter('paypal_email');
 
 
         return $this->render('BloggerShopBundle:Shop:nav.html.twig', $return_array);

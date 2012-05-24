@@ -23,3 +23,7 @@
         </ul>
     {% endif %}
 </div>
+    
+<div class="paypalCheckout">
+    {% include 'BloggerShopBundle:Shop:paypalCheckout.html.twig' with { 'email': email  } %}
+</div>

@@ -2,14 +2,19 @@
 
 {% block body %}
 
-        <header>
-            <h2>{{ product.title }}</h2>
+        <header class="row">
+            <h2 class="span7">{{ product.title }}</h2>
+            
+            <div class="span1">
+                {% include 'BloggerShopBundle:Shop:paypalAdd.html.twig' with { 'email': email, 'title': product.title, 'price': product.price  } %}
+            </div>
         </header>
         
         <div class="snippet">
             <p>{{ product.description|nl2br }}</p>
             
             {% render 'BloggerGalleryBundle:Gallery:gallery' with { 'images': product.images } %}
+            
         </div>
 
 {% endblock %}

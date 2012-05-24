@@ -36,6 +36,11 @@ class Product
     protected $description;
 
     /**
+     * @ORM\Column(type="decimal", precision="7", scale="2")
+     */
+    protected $price;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
@@ -330,5 +335,25 @@ class Product
         $em->flush();
         
         */
+    }
+
+    /**
+     * Set price
+     *
+     * @param decimal $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * Get price
+     *
+     * @return decimal 
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }
