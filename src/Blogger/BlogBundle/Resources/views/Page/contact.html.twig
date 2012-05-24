@@ -5,7 +5,7 @@
 
 {% block body %}
     <header>
-        <h1>Contact symblog</h1>
+        <h1>Contact {{ site_name }}</h1>
     </header>
     
     {% if app.session.hasFlash('blogger-notice') %}
@@ -14,7 +14,7 @@
         </div>
     {% endif %}
 
-    <p>Want to contact symblog?</p>
+    <p>Want to contact {{ site_name }}?</p>
     <form action="{{ path('BloggerBlogBundle_contact') }}" method="post" {{ form_enctype(form) }} class="blogger">
         {{ form_errors(form) }}
 
