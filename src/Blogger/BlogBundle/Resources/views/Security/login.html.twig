@@ -5,6 +5,8 @@
 
 {% block body %}
     
+    <h1>Login</h1>
+    
     <form action="{{ path('BloggerBlogBundle_security_login_check') }}" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="_username" value="" />

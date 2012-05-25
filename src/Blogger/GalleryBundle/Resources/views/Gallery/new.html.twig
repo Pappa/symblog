@@ -3,6 +3,9 @@
 
 {% block title %}New Gallery{% endblock %}
 {% block body %}
+    
+    <h1>New Gallery</h1>
+    
     <form action="{{ path('BloggerGalleryBundle_gallery_new') }}" method="post" {{ form_enctype(form) }} class="blogger">
    
     {{ form_widget(form) }}
