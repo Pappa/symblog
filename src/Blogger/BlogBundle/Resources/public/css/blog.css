@@ -33,3 +33,5 @@ header { clear:both; }
 .carousel { border: 1px solid #ccc; padding: 3px;}
 
 .navbar { margin:15px 0 10px 0; }
+
+h1 { margin-bottom: 20px; border-bottom: 1px solid #ccc; font-size: 28px; color: #666; line-height: 32px; font-weight:normal; }
