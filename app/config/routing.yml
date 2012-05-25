@@ -8,21 +8,21 @@ BloggerGalleryBundle:
 
 
         
-BloggerBlogBundle_security_login_check:
+BloggerSecurityBundle_security_login_check:
     pattern:  /login_check
-    defaults: { _controller: BloggerBlogBundle:Security:loginCheck }
+    defaults: { _controller: BloggerSecurityBundle:Security:loginCheck }
     requirements:
         _method:  GET|POST
         
-BloggerBlogBundle_security_login:
+BloggerSecurityBundle_security_login:
     pattern:  /login
-    defaults: { _controller: BloggerBlogBundle:Security:login }
+    defaults: { _controller: BloggerSecurityBundle:Security:login }
     requirements:
         _method:  GET
         
-BloggerBlogBundle_security_logout:
+BloggerSecurityBundle_security_logout:
     pattern:  /logout
-    defaults: { _controller: BloggerBlogBundle:Security:logout }
+    defaults: { _controller: BloggerSecurityBundle:Security:logout }
     requirements:
         _method:  GET
         

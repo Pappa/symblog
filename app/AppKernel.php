@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new Paella\Bundle\TwitterBootstrapBundle\PaellaTwitterBootstrapBundle(),
             new Blogger\ShopBundle\BloggerShopBundle(),
+            new Blogger\SecurityBundle\BloggerSecurityBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

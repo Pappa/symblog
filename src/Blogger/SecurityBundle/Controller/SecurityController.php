@@ -1,7 +1,7 @@
 <?php
-// src/Blogger/BlogBundle/Controller/SecurityController.php
+// src/Blogger/SecurityBundle/Controller/SecurityController.php
 
-namespace Blogger\BlogBundle\Controller;
+namespace Blogger\SecurityBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;

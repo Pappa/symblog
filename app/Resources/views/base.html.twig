@@ -33,9 +33,9 @@
                             <li><a href="{{ path('BloggerBlogBundle_about') }}">About</a></li>
                             <li><a href="{{ path('BloggerBlogBundle_contact') }}">Contact</a></li>
                             {% if app.user %}
-                                <li><a href="{{ path('BloggerBlogBundle_security_logout') }}">Logout</a></li>
+                                <li><a href="{{ path('BloggerSecurityBundle_security_logout') }}">Logout</a></li>
                             {% else %}
-                                <li><a href="{{ path('BloggerBlogBundle_security_login') }}">Login</a></li>
+                                <li><a href="{{ path('BloggerSecurityBundle_security_login') }}">Login</a></li>
                             {% endif %}
                           </ul>
                         </div><!-- /.nav-collapse -->
