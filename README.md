@@ -18,7 +18,7 @@ An excellent symfony2 tutorial which was the basis for this project.
  5. Add your mail account details to 'app/config/parameters.ini' to receive contact emails from the site.
  6. If you're using the Shop bundle, add your paypal email address to 'src/Blogger/ShopBundle/Resources/config/config.yml'
  
-## If you have trouble with the setup script
+### If you have trouble with the setup script
  
  1. Rename 'app/config/parameters.ini.dist' to 'app/config/parameters.ini' and add your parameters
  2. Rename 'src/Blogger/BlogBundle/Resources/config/config.yml.dist' to 'src/Blogger/BlogBundle/Resources/config/config.yml' and add your parameters
