@@ -2,7 +2,7 @@
 
 This is a blog written in symfony2. It includes a gallery and a way of embedding galleries and images within blog posts.
 
-It also includes a simple Paypal shop, which is a work in progress.
+It also includes a simple Paypal shop, which is currently a work in progress.
 
 Mostly this project is just for me to learn symfony2, but maybe someone will find it useful.
 
