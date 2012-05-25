@@ -15,6 +15,7 @@
         {% endfor %}
         </ul>
     {% if app.user %}
+        <h3>Admin</h3>
         <ul id="admin">
             <li><a href="{{ path('BloggerShopBundle_category_add') }}">Add another category</a></li>
             {% if selected_category %}

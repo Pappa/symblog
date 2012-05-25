@@ -3,7 +3,7 @@
 {% block body %}
 
         <header class="row">
-            <h2 class="span7">{{ product.title }}</h2>
+            <h2 class="span7">{{ product.title }} - £{{ product.price|number_format(2, '.', ',') }}</h2>
             
             <div class="span1">
                 {% include 'BloggerShopBundle:Shop:paypalAdd.html.twig' with { 'email': email, 'title': product.title, 'price': product.price  } %}
@@ -12,8 +12,9 @@
         
         <div class="snippet">
             <p>{{ product.description|nl2br }}</p>
-            
-            {% render 'BloggerGalleryBundle:Gallery:gallery' with { 'images': product.images } %}
+            {% if product.images is not empty %}
+                {% render 'BloggerGalleryBundle:Gallery:gallery' with { 'images': product.images } %}
+            {% endif %}
             
         </div>
 
