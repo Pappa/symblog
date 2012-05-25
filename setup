@@ -1,0 +1,50 @@
+#!/usr/bin/env php
+<?php
+
+// copy param and config files
+
+echo "\nCopying params...\n";
+echo (!file_exists('app/config/parameters.ini')) ? `cp 'app/config/parameters.ini.dist' 'app/config/parameters.ini'` : "Already exists\n";
+    
+echo "\nCopying blog config...\n";
+echo (!file_exists('src/Blogger/BlogBundle/Resources/config/config.yml')) ? `cp 'src/Blogger/BlogBundle/Resources/config/config.yml.dist' 'src/Blogger/BlogBundle/Resources/config/config.yml'` : "Already exists\n";
+
+echo "\nCopying shop config...\n";
+echo (!file_exists('src/Blogger/ShopBundle/Resources/config/config.yml')) ? `cp 'src/Blogger/ShopBundle/Resources/config/config.yml.dist' 'src/Blogger/ShopBundle/Resources/config/config.yml'` : "Already exists\n";
+
+echo "\nInstalling vendors...\n";
+echo (!file_exists('vendor')) ? `php bin/vendors install` : "Already installed\n";
+    
+echo "\nInstalling assets...\n";
+echo `php app/console assets:install web --symlink`;
+
+
+// check if app/config/parameters.ini has been changed
+if(compareFiles('app/config/parameters.ini', 'app/config/parameters.ini.dist')) {
+    echo "\nPlease add your db details to the file 'app/config/parameters.ini' and re-run this setup.\n";
+} else {
+    echo "\nCreating database...\n";
+    echo `php app/console doctrine:database:create`;
+    
+    echo "\nCreating schema...\n";
+    echo `php app/console doctrine:schema:create`;
+    
+    echo "\nLoading fixtures...\n";
+    echo `php app/console doctrine:fixtures:load`;
+
+    echo "\n\nAll done.\n";
+}
+
+
+
+
+function compareFiles($file1, $file2) {
+    $ar1 = file($file1);
+    $ar2 = file($file2);
+    foreach($ar1 as $num => $line) {
+        if($ar2[$num]!==$line) {
+            return false;
+        }
+    }
+    return true;
+}
