@@ -4,6 +4,7 @@ namespace Blogger\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Blogger\GalleryBundle\Entity\Gallery;
 use Blogger\GalleryBundle\Entity\Image;
 use Blogger\GalleryBundle\Form\GalleryType;
@@ -40,9 +41,10 @@ class GalleryController extends Controller
                 
                 $i = $request->files->get($form->getName());
                 
-                var_dump($i);
-                
                 foreach($i["images"] as $im) {
+                    if($im->getSize()==0) {
+                        throw new FileException("There was an error uploading one or more files. This may be because a file was larger than ".UploadedFile::getMaxFilesize()." bytes.");
+                    }
                     $image = new Image();
                     $image->setFile(new UploadedFile($im->getPathName(),$im->getClientOriginalName()));
                     $image->setGallery($gallery);
