@@ -24,6 +24,6 @@ class GalleryType extends AbstractType
 
     public function getName()
     {
-        return 'tigerwebdev_gallerybundle_gallerytype';
+        return 'blogger_gallerybundle_gallerytype';
     }
 }

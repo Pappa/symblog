@@ -1,4 +1,3 @@
-*.komodoproject
 app/config/parameters.ini
 vendor/*
 app/cache/*

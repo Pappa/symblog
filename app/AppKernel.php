@@ -17,14 +17,14 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new Blogger\BlogBundle\BloggerBlogBundle(),
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
             new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
-            new Blogger\GalleryBundle\BloggerGalleryBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
-            new Paella\Bundle\TwitterBootstrapBundle\PaellaTwitterBootstrapBundle(),
+            new Blogger\BlogBundle\BloggerBlogBundle(),
+            new Blogger\GalleryBundle\BloggerGalleryBundle(),
             new Blogger\ShopBundle\BloggerShopBundle(),
             new Blogger\SecurityBundle\BloggerSecurityBundle(),
+            new Paella\Bundle\TwitterBootstrapBundle\PaellaTwitterBootstrapBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

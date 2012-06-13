@@ -28,7 +28,7 @@ class Image
     public $path;
     
     /**
-     * @Assert\File(maxSize="6000000")
+     * @Assert\Image(maxSize="2M")
      */
     public $file;
 

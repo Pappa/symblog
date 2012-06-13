@@ -18,7 +18,6 @@ echo (!file_exists('vendor')) ? `php bin/vendors install` : "Already installed\n
 echo "\nInstalling assets...\n";
 echo `php app/console assets:install web --symlink`;
 
-
 // check if app/config/parameters.ini has been changed
 if(compareFiles('app/config/parameters.ini', 'app/config/parameters.ini.dist')) {
     echo "\nPlease add your db details to the file 'app/config/parameters.ini' and re-run this setup.\n";

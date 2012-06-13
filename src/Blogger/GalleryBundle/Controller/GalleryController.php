@@ -43,7 +43,7 @@ class GalleryController extends Controller
                 
                 foreach($i["images"] as $im) {
                     if($im->getSize()==0) {
-                        throw new FileException("There was an error uploading one or more files. This may be because a file was larger than ".UploadedFile::getMaxFilesize()." bytes.");
+                        throw new FileException("There was an error uploading one or more files.\nThis may be because a file was larger than ".round(UploadedFile::getMaxFilesize()/1024/1024, 2)." MB.");
                     }
                     $image = new Image();
                     $image->setFile(new UploadedFile($im->getPathName(),$im->getClientOriginalName()));
