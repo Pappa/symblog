@@ -295,7 +295,7 @@ class Gallery
         foreach($images as $image) {
             var_dump($image);
             $i = new Image();
-            $i->setPath('/uploads/images/poo555.jpg');
+            $i->setPath('/media/images/poo555.jpg');
             //$i->setFile($image->pathName);
             
             $em->persist($i);

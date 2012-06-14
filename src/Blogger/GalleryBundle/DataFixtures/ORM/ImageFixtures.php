@@ -14,27 +14,27 @@ class ImageFixtures extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $image = new Image();
-        $image->setPath('4f96bec04b1ac.jpg');
+        $image->setPath('1.jpg');
         $image->setGallery($manager->merge($this->getReference('gallery-1')));
         $manager->persist($image);
         
         $image = new Image();
-        $image->setPath('4f96bec04b7ec.jpg');
+        $image->setPath('2.jpg');
         $image->setGallery($manager->merge($this->getReference('gallery-1')));
         $manager->persist($image);
         
         $image = new Image();
-        $image->setPath('4f96bec04ba97.jpg');
+        $image->setPath('3.jpg');
         $image->setGallery($manager->merge($this->getReference('gallery-1')));
         $manager->persist($image);
         
         $image = new Image();
-        $image->setPath('4f96bec04bca3.jpg');
+        $image->setPath('4.jpg');
         $image->setGallery($manager->merge($this->getReference('gallery-1')));
         $manager->persist($image);
         
         $image = new Image();
-        $image->setPath('4f96bec04be8a.jpg');
+        $image->setPath('5.jpg');
         $image->setGallery($manager->merge($this->getReference('gallery-1')));
         $manager->persist($image);
 

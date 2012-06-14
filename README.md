@@ -18,6 +18,7 @@ An excellent Symfony2 tutorial which was the basis for this project.
  5. Add your mail account details to 'app/config/parameters.ini' to receive contact emails from the site.
  6. If you're using the Shop bundle, add your paypal email address to 'src/Blogger/ShopBundle/Resources/config/config.yml'
  7. Set up permissions on the app/cache and app/logs directories following the directions here: http://symfony.com/doc/current/book/installation.html#configuration-and-setup
+ 8. Apply the same permissions to web/media
  
 ### If you have trouble with the setup script
  

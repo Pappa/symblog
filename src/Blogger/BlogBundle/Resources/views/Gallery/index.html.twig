@@ -13,7 +13,7 @@
             <p>{{ gallery.description|slice(0,200) }}</p>
             {% for image in gallery.images %}
                 {% if loop.index < 6 %}
-                <a href="{{ path('BloggerBlogBundle_gallery_show', { 'id': gallery.id, 'slug': gallery.slug, 'start': loop.index-1 }) }}"><img src="{{ "/uploads/images/#{image.path}" | apply_filter('my_thumb')  }}"/></a>
+                <a href="{{ path('BloggerBlogBundle_gallery_show', { 'id': gallery.id, 'slug': gallery.slug, 'start': loop.index-1 }) }}"><img src="{{ "/media/images/#{image.path}" | apply_filter('my_thumb')  }}"/></a>
                 {% endif %}
             {% endfor %}
             <p class="continue"><a href="{{ path('BloggerBlogBundle_gallery_show', { 'id': gallery.id, 'slug': gallery.slug }) }}">more...</a></p>

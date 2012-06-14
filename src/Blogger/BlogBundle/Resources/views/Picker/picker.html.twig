@@ -10,7 +10,7 @@
             <p>Or attach individual images...</p>
             {% for image in gallery.images %}
                 {% if loop.index < 7 %}
-                <a id="image-{{ image.id }}" class="attachI" href="{{ path('BloggerBlogBundle_gallery_show', { 'id': gallery.id, 'slug': gallery.slug, 'start': loop.index-1 }) }}"><img src="{{ "/uploads/images/#{image.path}" | apply_filter('my_thumb')  }}"/></a>
+                <a id="image-{{ image.id }}" class="attachI" href="{{ path('BloggerBlogBundle_gallery_show', { 'id': gallery.id, 'slug': gallery.slug, 'start': loop.index-1 }) }}"><img src="{{ "/media/images/#{image.path}" | apply_filter('my_thumb')  }}"/></a>
                 {% endif %}
             {% endfor %}
         </div>
