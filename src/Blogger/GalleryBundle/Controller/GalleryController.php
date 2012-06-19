@@ -42,12 +42,13 @@ class GalleryController extends Controller
                 $i = $request->files->get($form->getName());
                 
                 foreach($i["images"] as $im) {
-                    if($im->getError()===1) {
+                    if(!$im->isValid()) {
                         
                         $mb = round(UploadedFile::getMaxFilesize()/1024/1024, 2);
                 
                         return $this->render('BloggerGalleryBundle:Gallery:error.html.twig', array(
-                            'mb'      => $mb
+                            'mb'      => $mb,
+                            'error'   => $im->getError()
                         ));
                     }
                     $image = new Image();

@@ -4,6 +4,8 @@
 {% block body %}
     <h1>Upload Error</h1>
     <p>There was an error uploading one or more files.</p>
-    <p>This may be because a file was larger than {{ mb }} MB.</p>
+    {% if error == '1' %}
+        <p>A file was larger than {{ mb }} MB.</p>
+    {% endif %}
     
 {% endblock %}

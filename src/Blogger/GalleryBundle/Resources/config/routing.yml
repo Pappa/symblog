@@ -4,7 +4,7 @@ BloggerGalleryBundle_gallery_index:
     
 BloggerGalleryBundle_gallery_error:
     pattern:  /galleries/error
-    defaults: { _controller: BloggerGalleryBundle:Gallery:error, mb: 0 }
+    defaults: { _controller: BloggerGalleryBundle:Gallery:error }
     
 BloggerGalleryBundle_gallery_edit:
     pattern:  /galleries/{id}/{slug}/edit
