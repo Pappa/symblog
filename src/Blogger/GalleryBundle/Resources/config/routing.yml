@@ -2,6 +2,10 @@ BloggerGalleryBundle_gallery_index:
     pattern:  /galleries
     defaults: { _controller: BloggerGalleryBundle:Gallery:index }
     
+BloggerGalleryBundle_gallery_error:
+    pattern:  /galleries/error
+    defaults: { _controller: BloggerGalleryBundle:Gallery:error, mb: 0 }
+    
 BloggerGalleryBundle_gallery_edit:
     pattern:  /galleries/{id}/{slug}/edit
     defaults: { _controller: BloggerGalleryBundle:Gallery:edit }

@@ -18,6 +18,7 @@ class GalleryType extends AbstractType
             "attr" => array(
                 "accept" => "image/*",
                 "multiple" => "multiple",
+                "class" => "ererer",
             )))
             ->add('tags');
     }

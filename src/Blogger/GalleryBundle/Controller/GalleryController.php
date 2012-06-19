@@ -42,8 +42,13 @@ class GalleryController extends Controller
                 $i = $request->files->get($form->getName());
                 
                 foreach($i["images"] as $im) {
-                    if($im->getSize()==0) {
-                        throw new FileException("There was an error uploading one or more files.\nThis may be because a file was larger than ".round(UploadedFile::getMaxFilesize()/1024/1024, 2)." MB.");
+                    if($im->getError()===1) {
+                        
+                        $mb = round(UploadedFile::getMaxFilesize()/1024/1024, 2);
+                
+                        return $this->render('BloggerGalleryBundle:Gallery:error.html.twig', array(
+                            'mb'      => $mb
+                        ));
                     }
                     $image = new Image();
                     $image->setFile(new UploadedFile($im->getPathName(),$im->getClientOriginalName()));
